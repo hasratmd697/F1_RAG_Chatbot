@@ -78,10 +78,6 @@ Open [http://localhost:3000](http://localhost:3000) to start chatting about F1!
 4. **Context Injection**: Retrieved documents are added to the prompt as context
 5. **Response Generation**: Gemini generates an answer using both the context and its knowledge
 
-## 📝 License
-
-MIT License
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests.
