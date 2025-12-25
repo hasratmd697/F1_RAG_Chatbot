@@ -1,40 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🏎️ F1GPT - Formula 1 RAG Chatbot
 
-## Getting Started
+An AI-powered chatbot that answers questions about Formula 1 racing using Retrieval-Augmented Generation (RAG). Built with Next.js, Google Gemini AI, and Astra DB for vector search.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black?logo=next.js)
+![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-blue?logo=google)
+![Astra DB](https://img.shields.io/badge/Astra%20DB-Vector%20Search-purple)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **RAG-Powered Responses**: Retrieves relevant F1 context from a vector database to provide accurate, up-to-date answers
+- **Gemini AI Integration**: Uses Google's Gemini 2.5 Flash Lite model for fast, intelligent responses
+- **Vector Search**: Astra DB stores F1 knowledge embeddings for semantic similarity search
+- **Modern UI**: Clean, responsive chat interface built with Next.js and CSS
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 16, React, TypeScript
+- **AI Model**: Google Gemini 2.5 Flash Lite (chat) + text-embedding-004 (embeddings)
+- **Vector Database**: DataStax Astra DB
+- **Styling**: CSS
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- Google Gemini API Key
+- Astra DB Account with a vector-enabled database
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+ASTRA_DB_APPLICATION_TOKEN=your_astra_db_token
+ASTRA_DB_API_ENDPOINT=your_astra_db_endpoint
+ASTRA_DB_NAMESPACE=your_keyspace
+ASTRA_DB_COLLECTION=your_collection_name
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# Install dependencies
+npm install
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Load sample F1 data into Astra DB (run once)
+npx ts-node scripts/loaddb.ts
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+# Start the development server
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to start chatting about F1!
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/
+│   ├── api/
+│   │   └── chat/
+│   │       └── route.ts      # Chat API with RAG
+│   ├── components/           # React components
+│   ├── page.tsx              # Main chat page
+│   └── global.css            # Styles
+├── scripts/
+│   └── loaddb.ts             # Script to load F1 data into Astra DB
+└── .env                      # Environment variables
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 🔧 How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **User Query**: User asks a question about Formula 1
+2. **Embedding**: The query is converted to a vector using Gemini's text-embedding-004 model
+3. **Vector Search**: Astra DB finds the 5 most similar F1 documents
+4. **Context Injection**: Retrieved documents are added to the prompt as context
+5. **Response Generation**: Gemini generates an answer using both the context and its knowledge
 
-## Deploy on Vercel
+## 📝 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
