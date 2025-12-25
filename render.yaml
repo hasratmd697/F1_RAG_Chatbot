@@ -2,7 +2,7 @@ services:
   - type: web
     name: f1gpt
     runtime: node
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --legacy-peer-deps && npm run build
     startCommand: npm start
     envVars:
       - key: GEMINI_API_KEY
