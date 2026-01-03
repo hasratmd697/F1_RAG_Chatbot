@@ -6,6 +6,9 @@ An AI-powered chatbot that answers questions about Formula 1 racing using Retrie
 ![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-blue?logo=google)
 ![Astra DB](https://img.shields.io/badge/Astra%20DB-Vector%20Search-purple)
 
+<img width="1920" height="1063" alt="Screenshot 2026-01-03 214954" src="https://github.com/user-attachments/assets/eaeb2736-3e1e-4bdd-acaa-8927e9a105d9" />
+
+
 ## ✨ Features
 
 - **RAG-Powered Responses**: Retrieves relevant F1 context from a vector database to provide accurate, up-to-date answers
